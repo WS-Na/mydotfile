@@ -26,7 +26,8 @@ require("plugin-config.project")
 require('plugin-config/nvim-treesitter')
 -- zen 模式
 require('plugin-config.zen-mode')
-
+-- dash
+require("plugin-config.libdash")
 
 -- 代码部分
 -- 终端
@@ -39,3 +40,5 @@ require('lsp/setup')
 require('lsp/cmp')
 -- ui
 require("lsp/saga")
+-- debug ui
+require("lsp.dap-virtual-text")

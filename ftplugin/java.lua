@@ -1,9 +1,16 @@
 -- 提供snippetSupport
 -- 为每一个项目添加工作区
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = '/Users/naweishuai/.cache/jdtls-workspace/' .. project_name
+local workspace_dir = vim.fn.glob('~/.cache/nvim-jdtls-workspace/') .. project_name
 -- cmp 自动补全
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- debug and test
+local bundles = {
+  vim.fn.glob("~/.local/share/nvim/lsp_servers/eclipse-jdtls/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
+  -- 0.36.0
+};
+vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/naweishuai/.local/share/nvim/lsp_servers/eclipse-jdtls/vscode-java-test/server/*.jar"), "\n"))
+
 
 local config = {
   -- The command that starts the language server
@@ -19,18 +26,16 @@ local config = {
     '-Xms1g',
     '-Xms4g',
     --"-javaagent:/Users/naweishuai/.local/share/nvim/lsp_servers/eclipse-jdtls/lombok.jar",
-    --"-javaagent:".."/Users/naweishuai/Downloads/lombok.jar",
-    --"-Xbootclasspath/a:".."/Users/naweishuai/Downloads/lombok.jar",
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
     -- 使用lombok
-
+    '-javaagent:'..vim.fn.glob('~/.local/share/nvim/lsp_servers/eclipse-jdtls/lombok.jar'),
+    -- '-Xbootclasspath/a:'..'/Users/naweishuai/Downloads/lombok.jar',
     '-jar',
-    '/Users/naweishuai/.local/share/nvim/lsp_servers/eclipse-jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
-
+      vim.fn.glob('~/.local/share/nvim/lsp_servers/eclipse-jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
     '-configuration',
-    '/Users/naweishuai/.local/share/nvim/lsp_servers/eclipse-jdtls/config_mac',
+      vim.fn.glob('~/.local/share/nvim/lsp_servers/eclipse-jdtls/config_mac'),
 
     '-data',workspace_dir,
 
@@ -41,8 +46,8 @@ local config = {
   -- 配置eclipse.jdt.ls具体设置
   -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
   settings = {
-      -- cmp setup
-  capabilities = capabilities,
+    -- cmp setup
+    capabilities = capabilities,
 
     java = {
     }
@@ -51,10 +56,14 @@ local config = {
   -- 使用额外的 eclipse.jdt.ls 插件。
   -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
   init_options = {
-    bundles = {}
+    bundles = bundles,
   },
 
   on_attach = function(client, bufnr)
+    -- Debug
+    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    -- java-debug discover main classes
+    require('jdtls.dap').setup_dap_main_class_configs()
     -- 禁用格式化功能，交给专门插件处理
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
@@ -100,4 +109,5 @@ local config = {
 }
 
 require('jdtls').start_or_attach(config)
-
+require'jdtls'.test_class()
+require'jdtls'.test_nearest_method()

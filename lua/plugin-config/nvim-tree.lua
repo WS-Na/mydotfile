@@ -49,7 +49,12 @@ nvim_tree.setup({
     -- 显示图标
     signcolumn = "yes",
   },
-  quit_on_open = true,
+  actions = {
+    open_file ={
+    -- 打开文件自动关闭nvim_tree
+    quit_on_open = true,
+    },
+  },
 
   -- npm install -g wsl-open
   -- https://github.com/4U6U57/wsl-open/

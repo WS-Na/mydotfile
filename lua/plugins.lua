@@ -40,7 +40,7 @@ packer.startup({
     -------------------------------------------------------
 
 
-    -------------------  telescope ---------------------------------
+    -------------------  treesitter ------------------------
 
     -- treesitter
     use({
@@ -49,8 +49,6 @@ packer.startup({
     })
     -- rainbow
     use({"p00f/nvim-ts-rainbow"})
-    -- 美化code.action
-    use {'nvim-telescope/telescope-ui-select.nvim' }
     -------------------------------------------------------
 
 
@@ -89,6 +87,10 @@ packer.startup({
     -- 常见编程语言代码段
     use("rafamadriz/friendly-snippets")
     -----------------------------
+    -- debug
+    use ('mfussenegger/nvim-dap')
+    -- debug ui
+    use('theHamsta/nvim-dap-virtual-text')
     -- ui
     use("onsails/lspkind-nvim")
     use("tami5/lspsaga.nvim" )

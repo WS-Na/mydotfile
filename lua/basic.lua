@@ -44,7 +44,7 @@ vim.o.whichwrap = '<,>,[,]'
 -- 允许隐藏被修改过的buffer
 vim.o.hidden = true
 -- 鼠标支持
-vim.o.mouse = "a"
+-- vim.o.mouse = "a"
 -- 和系统剪切板同步
 -- vim.opt.clipboard = 'unnamedpuls'
 vim.api.nvim_set_option("clipboard","unnamed")

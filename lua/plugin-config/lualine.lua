@@ -1,44 +1,45 @@
 -- 如果找不到lualine 组件，就不继续执行
-local status, lualine = pcall(require, "lualine")
+local status, lualine = pcall(require, 'lualine')
 if not status then
-  vim.notify("没有找到 lualine")
-  return
+    vim.notify('没有找到 lualine')
+    return
 end
 
 lualine.setup({
-  options = {
-    theme = "OceanicNext",
-    component_separators = { left = "|", right = "|" },
-    -- https://github.com/ryanoasis/powerline-extra-symbols
-    section_separators = { left = " ", right = "" },
-  },
-  extensions = { "nvim-tree", "toggleterm" },
-  sections = {
+    options = {
+        theme = 'OceanicNext',
+        component_separators = { left = '|', right = '|' },
+        -- https://github.com/ryanoasis/powerline-extra-symbols
+        section_separators = { left = ' ', right = '' },
+        globalstatus = true,
+    },
+    extensions = { 'nvim-tree', 'toggleterm', 'symbols-outline' },
+    sections = {
 
-    lualine_c = {
-      "filename",
-    {
-        "lsp_progress",
-        spinner_symbols = { " ", " ", " ", " ", " ", " " },
-      },
-    },
-    lualine_x = {
-      "filesize",
-    {
-        "fileformat",
-        symbols = {
-          unix = '', -- e712
-          dos = '', -- e70f
-          mac = '', -- e711
+        lualine_c = {
+            'filename',
+            {
+                'lsp_progress',
+                spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ' },
+            },
         },
-        -- symbols = {
-        -- unix = "LF",
-        -- dos = "CRLF",
-        -- mac = "CR",
-        -- },
-      },
-      "encoding",
-      "filetype",
+        lualine_x = {
+            'filesize',
+            {
+                'fileformat',
+                symbols = {
+                    unix = '', -- e712
+                    dos = '', -- e70f
+                    mac = '', -- e711
+                },
+                -- symbols = {
+                -- unix = "LF",
+                -- dos = "CRLF",
+                -- mac = "CR",
+                -- },
+            },
+            'encoding',
+            'filetype',
+        },
     },
-  },
 })

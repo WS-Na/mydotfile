@@ -1,5 +1,5 @@
 -- utf8
-vim.g.encoding = "UTF-8"
+vim.g.encoding = 'UTF-8'
 vim.o.fileencoding = 'utf-8'
 -- jkhl 移动时光标周围保留8行
 vim.o.scrolloff = 8
@@ -7,9 +7,9 @@ vim.o.sidescrolloff = 8
 -- 高亮所在行
 vim.wo.cursorline = false
 -- 显示左侧图标指示列
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = 'yes'
 -- 右侧参考线，超过表示代码太长了，考虑换行
-vim.wo.colorcolumn = "100"
+vim.wo.colorcolumn = '100'
 -- 缩进2个空格等于一个Tab
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
@@ -47,7 +47,7 @@ vim.o.hidden = true
 -- vim.o.mouse = "a"
 -- 和系统剪切板同步
 -- vim.opt.clipboard = 'unnamedpuls'
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option('clipboard', 'unnamed')
 -- 禁止创建备份文件
 vim.o.backup = false
 vim.o.writebackup = false
@@ -60,9 +60,9 @@ vim.o.timeoutlen = 500
 vim.o.splitbelow = true
 vim.o.splitright = true
 -- 自动补全不自动选中
-vim.g.completeopt = "menu,menuone,noselect,noinsert"
+vim.g.completeopt = 'menu,menuone,noselect,noinsert'
 -- 样式
-vim.o.background = "dark"
+vim.o.background = 'dark'
 vim.o.termguicolors = true
 vim.opt.termguicolors = true
 -- 不可见字符的显示，这里只把空格显示为一个点
@@ -84,13 +84,13 @@ vim.o.autowriteall = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 -- 不同模式使用不同行号
-vim.cmd [[
-   augroup 今天也是充满希望的一天
-     " 当前窗口用相对行号，其他窗口绝对行号
-     autocmd WinEnter * if &number | execute("setlocal number relativenumber") | endif
-     autocmd WinLeave * if &number | execute("setlocal number norelativenumber") | endif
-     " 插入模式下用绝对行号, 普通模式下用相对
-     autocmd InsertEnter * :setlocal norelativenumber number
-     autocmd InsertLeave * :setlocal relativenumber number
-   augroup
-]]
+-- vim.cmd [[
+--    augroup 今天也是充满希望的一天
+--      " 当前窗口用相对行号，其他窗口绝对行号
+--      autocmd WinEnter * if &number | execute("setlocal number relativenumber") | endif
+--      autocmd WinLeave * if &number | execute("setlocal number norelativenumber") | endif
+--      " 插入模式下用绝对行号, 普通模式下用相对
+--      autocmd InsertEnter * :setlocal norelativenumber number
+--      autocmd InsertLeave * :setlocal relativenumber number
+--    augroup
+-- ]]

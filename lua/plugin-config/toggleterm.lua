@@ -1,4 +1,5 @@
 local status, toggleterm= pcall(require, "toggleterm")
+
 if not status then
   vim.notify("没有找到 toggleterm")
   return
@@ -24,6 +25,7 @@ toggleterm.setup{
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
+  hidden = true ,
   shading_factor = 1, -- 1 : dark | 3 : light
   start_in_insert = true,
   insert_mappings = true,
@@ -31,7 +33,7 @@ toggleterm.setup{
   persist_size = true,
   -- 设置终端出现样式
   direction = "float",--'vertical' | 'horizontal' | 'window' | 'float',
-  close_on_exit = true,
+  close_on_exit = false,
   shell = vim.o.shell,
   -- float样式设计
   float_opts = {
@@ -54,7 +56,23 @@ toggleterm.setup{
 
 -- local Terminal = require("toggleterm.terminal").Terminal
 -- local node = Terminal:new({ cmd = "node", hidden = true })
--- 
 -- function _NODE_TOGGLE()
 --   node:toggle()
 -- end
+-- use lazygit
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  hidden = true ,
+  dir = "git_dir",
+  direction = "float",
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+  end,
+})
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", ",t", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})

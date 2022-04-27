@@ -7,13 +7,12 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- debug and test
 local bundles = {
     vim.fn.glob(
-        '~/.local/share/nvim/lsp_servers/eclipse-jdtls/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'
+        '~/.local/share/nvim/lsp_servers/jdtls-support/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'
     ),
-    -- 0.36.0
 }
 vim.list_extend(
     bundles,
-    vim.split(vim.fn.glob('~/.local/share/nvim/lsp_servers/eclipse-jdtls/vscode-java-test/server/*.jar'), '\n')
+    vim.split(vim.fn.glob('~/.local/share/nvim/lsp_servers/jdtls-support/vscode-java-test/server/*.jar'), '\n')
 )
 
 local config = {
@@ -35,7 +34,7 @@ local config = {
         '--add-opens',
         'java.base/java.lang=ALL-UNNAMED',
         -- 使用lombok
-        '-javaagent:' .. vim.fn.glob('~/.local/share/nvim/lsp_servers/eclipse-jdtls/lombok.jar'),
+        '-javaagent:' .. vim.fn.glob('~/.local/share/nvim/lsp_servers/jdtls-support/lombok.jar'),
         -- '-Xbootclasspath/a:'..'/Users/naweishuai/Downloads/lombok.jar',
         '-jar',
         vim.fn.glob('~/.local/share/nvim/lsp_servers/eclipse-jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
@@ -68,10 +67,11 @@ local config = {
                         name = 'JavaSE-17',
                         path = vim.fn.glob('/Library/Java/JavaVirtualMachines/jdk17/Contents/Home'),
                     },
-                    {
-                        name = 'JavaSE-8',
-                        path = vim.fn.glob('/Library/Java/JavaVirtualMachines/jdk8/Contents/Home'),
-                    },
+                    --LSP[jdt.ls] Invalid runtime for JavaSE-8: Runtime at '/Library/Java/JavaVirtualMachines/jdk8/Contents/Home/' is not compatible with the 'JavaSE-8' environment.
+                    --{
+                    --    name = 'JavaSE-8',
+                    --    path = vim.fn.glob('/Library/Java/JavaVirtualMachines/jdk8/Contents/Home/'),
+                    --},
                 },
             },
         },
@@ -99,6 +99,7 @@ local config = {
         vim.cmd("command! -buffer JdtJol lua require('jdtls').jol()")
         vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
         vim.cmd("command! -buffer JdtJshell lua require('jdtls').jshell()")
+        vim.cmd("command! -buffer JdtSetRuntime lua require('jdtls').runtime()")
         vim.cmd([[setlocal shiftwidth=4]])
         vim.cmd([[setlocal tabstop=4]])
     end,

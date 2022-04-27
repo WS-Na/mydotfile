@@ -314,6 +314,11 @@ _G.packer_plugins = {
     path = "/Users/naweishuai/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-maven-search"] = {
+    loaded = true,
+    path = "/Users/naweishuai/.local/share/nvim/site/pack/packer/start/telescope-maven-search",
+    url = "https://github.com/aloussase/telescope-maven-search"
+  },
   ["telescope-ui-select.nvim"] = {
     loaded = true,
     path = "/Users/naweishuai/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",

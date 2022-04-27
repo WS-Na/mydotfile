@@ -32,7 +32,7 @@ formatter.setup({
                     -- Formatter uses '-' as stdin
                     args = {
                         '-jar',
-                        vim.fn.glob('~/.local/share/nvim/google-java-format-*.jar'),
+                        vim.fn.glob('~/.local/share/nvim/lsp_servers/jdtls-support/google-java-format-*.jar'),
                         '-',
                     },
                     stdin = true,

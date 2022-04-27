@@ -147,6 +147,7 @@ map('n', '<space>ff', ':Telescope live_grep<CR>', opt)
 map('n', '<space>fe', ':Telescope env<CR>', opt)
 map('n', '<space>fb', ':Telescope bookmarks<CR>', opt)
 map('n', '<space>fi', ':Telescope builtin<CR>', opt)
+map('n', '<space>fm', ':Telescope commands<CR>', opt)
 -- extension
 -- map('n', '<space>d', ':Telescope dash search<CR>', opt)
 -- Telescope 列表中 插入模式快捷键

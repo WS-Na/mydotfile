@@ -31,8 +31,6 @@ require('plugin-config.project')
 require('plugin-config/nvim-treesitter')
 -- zen 模式
 require('plugin-config.zen-mode')
--- dash
-require('plugin-config.libdash')
 -- hop(easymotion)
 require('plugin-config.hop')
 -- sursorline

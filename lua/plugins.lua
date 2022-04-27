@@ -87,6 +87,8 @@ packer.startup({
         use({
             'AckslD/nvim-neoclip.lua',
         })
+        --  search dependencies in MavenCentral
+        use('aloussase/telescope-maven-search')
         -------------------------------------------------------
 
         -------------------  LSP  ---------------------------------

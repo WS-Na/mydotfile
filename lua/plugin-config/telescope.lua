@@ -53,40 +53,23 @@ telescope.setup({
             url_open_plugin = nil,
 
             -- Show the full path to the bookmark instead of just the bookmark name
-            full_path = true,
+            full_path = false,
 
             -- Provide a custom profile name for Firefox
             --firefox_profile_name = nil,
         },
-        neoclip = {
-            history = 1000,
-            enable_persistent_history = false,
-            length_limit = 1048576,
-            continuous_sync = false,
-            db_path = vim.fn.glob('~/.cache/clipboardHistory'),
-            filter = nil,
-            preview = true,
-            default_register = '"',
-            default_register_macros = 'q',
-            enable_macro_history = true,
-            content_spec_column = false,
-            on_paste = {
-                set_reg = false,
-            },
-            on_replay = {
-                set_reg = false,
-            },
-        },
-        maven_search = {
-            query = '',
-            format = 'maven',
+        maven_search = {},
+        emoji = {
+            -- {name="", value="", cagegory="", description=""}
         },
     },
 })
 require('telescope').load_extension('env')
 require('telescope').load_extension('ui-select')
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('emoji')
+require('telescope').load_extension('maven_search')
 require('telescope').load_extension('bookmarks')
+
 -- not work
 require('telescope').load_extension('neoclip')
-require('telescope').load_extension('maven_search')

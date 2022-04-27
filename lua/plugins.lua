@@ -86,9 +86,20 @@ packer.startup({
         -- clipboard manager
         use({
             'AckslD/nvim-neoclip.lua',
+            requires = {
+                --  use this to  persistent history
+                { 'tami5/sqlite.lua', module = 'sqlite' },
+                { 'nvim-telescope/telescope.nvim' },
+            },
+            --  config = function()
+            --      require('neoclip').setup()
+            --  end,
         })
+
         --  search dependencies in MavenCentral
         use('aloussase/telescope-maven-search')
+        -- emoji let's go
+        use('xiyaowong/telescope-emoji')
         -------------------------------------------------------
 
         -------------------  LSP  ---------------------------------

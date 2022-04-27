@@ -23,6 +23,8 @@ require('plugin-config.bufferline')
 require('plugin-config.lualine')
 -- Telescope
 require('plugin-config.telescope')
+-- extionsion for clipboard manager in telescope
+require('plugin-config.neoclip')
 -- dashboard
 require('plugin-config.dashboard')
 -- project

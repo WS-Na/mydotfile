@@ -1,9 +1,10 @@
 require('neoclip').setup({
     history = 1000,
-    enable_persistent_history = false,
+    enable_persistent_history = true,
     length_limit = 1048576,
-    continuous_sync = false,
-    db_path = vim.fn.stdpath('~/.cache/clipboardHistory'),
+    continuous_sync = true,
+    -- db_path = vim.fn.glob('~/.cache/clipboardHistory'),
+    db_path = vim.fn.stdpath('data') .. '/databases/neoclip.sqlite3',
     filter = nil,
     preview = true,
     default_register = '"',
@@ -14,12 +15,12 @@ require('neoclip').setup({
         set_reg = false,
     },
     on_replay = {
-        set_reg = false,
+        set_reg = true,
     },
     keys = {
         telescope = {
             i = {
-                select = '<cr>',
+                select = '<CR>',
                 paste = '<c-p>',
                 paste_behind = '<c-k>',
                 replay = '<c-q>', -- replay a macro

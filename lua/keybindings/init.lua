@@ -28,10 +28,8 @@ map('n', 'sc', '<C-w>c', opt)
 map('n', 'so', '<C-w>o', opt)
 
 -- 左右比例控制
-map('n', '˚∆', ':vertical resize -6<CR>', opt)
-map('n', '∆˚', ':vertical resize +6<CR>', opt)
-map('n', 's,', ':vertical resize -20<CR>', opt)
-map('n', 's.', ':vertical resize +20<CR>', opt)
+map('n', 'sm', ':vertical resize -6<CR>', opt)
+map('n', 's,', ':vertical resize +6<CR>', opt)
 -- 上下比例
 map('n', 'sj', ':resize +4<CR>', opt)
 map('n', 'sk', ':resize -4<CR>', opt)
@@ -151,6 +149,7 @@ map('n', '<space>fm', ':Telescope commands<CR>', opt)
 map('n', '<space>fs', ':Telescope emoji<CR>', opt)
 map('n', '<space>fd', ':Telescope maven_search query=', opt)
 map('n', '<space>fh', ':Telescope neoclip<CR>', opt)
+map('n', '<space>fu', ':Telescope lsp_document_symbols<CR>', opt)
 -- extension
 -- map('n', '<space>d', ':Telescope dash search<CR>', opt)
 -- Telescope 列表中 插入模式快捷键
@@ -213,6 +212,7 @@ map('i', '<C-f>', '<Esc>:HopWord<CR>', opt)
 map('n', 'fl', ':HopLineStart<CR>', opt)
 map('n', 'fa', ':HopChar1<CR>', opt)
 map('n', "f'", ':HopChar1<CR>"', opt)
+map('n', 'f,', ':HopChar1<CR><', opt)
 map('n', 'f<space>', ':HopChar1<CR><space>', opt)
 map('n', 'f9', ':HopChar1<CR>(', opt)
 map('n', 'f[', ':HopChar1<CR>{', opt)

@@ -70,6 +70,4 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('emoji')
 require('telescope').load_extension('maven_search')
 require('telescope').load_extension('bookmarks')
-
--- not work
 require('telescope').load_extension('neoclip')

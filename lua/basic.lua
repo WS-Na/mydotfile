@@ -83,7 +83,6 @@ vim.o.autowriteall = false
 -- 使用相对行号
 vim.wo.number = true
 vim.wo.relativenumber = true
--- 不同模式使用不同行号
 -- vim.cmd [[
 --    augroup 今天也是充满希望的一天
 --      " 当前窗口用相对行号，其他窗口绝对行号

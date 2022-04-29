@@ -47,15 +47,15 @@ map('v', '<space>jn', "<Esc><Cmd>lua require'jdtls'.test_nearest_method()<CR>", 
 -- debug
 
 map('n', '<C-j>B', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opt)
-map('n', '<C-j>b', ":lua require'dap'.toggle_breakpoint()<CR>", opt)
+map('n', '<C-j><C-b>', ":lua require'dap'.toggle_breakpoint()<CR>", opt)
 map('n', '<C-j>c', ":lua require'dap'.continue()<CR>", opt)
-map('n', '<C-j>a', ":lua require'dap'.step_over()<CR>", opt)
-map('n', '<C-j>i', ":lua require'dap'.step_into()<CR>", opt)
-map('n', '<C-j>o', ":lua require'dap'.step_out()<CR>", opt)
-map('v', '<C-j>c', "<Esc>:lua require'dap'.continue()<CR>", opt)
-map('v', '<C-j>a', "<Esc>:lua require'dap'.step_over()<CR>", opt)
-map('v', '<C-j>i', "<Esc>:lua require'dap'.step_into()<CR>", opt)
-map('v', '<C-j>o', "<Esc>:lua require'dap'.step_out()<CR>", opt)
+map('n', '<C-j><C-a>', ":lua require'dap'.step_over()<CR>", opt)
+map('n', '<C-j><C-i>', ":lua require'dap'.step_into()<CR>", opt)
+map('n', '<C-j><C-o>', ":lua require'dap'.step_out()<CR>", opt)
+map('v', '<C-j><C-c>', "<Esc>:lua require'dap'.continue()<CR>", opt)
+map('v', '<C-j><C-a>', "<Esc>:lua require'dap'.step_over()<CR>", opt)
+map('v', '<C-j><C-i>', "<Esc>:lua require'dap'.step_into()<CR>", opt)
+map('v', '<C-j><C-o>', "<Esc>:lua require'dap'.step_out()<CR>", opt)
 --nnoremap <silent> <space>lp  ':lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>'
 --nnoremap <silent> <space>dr  ':lua require'dap'.repl.open()<CR>'
 --nnoremap <silent> <space>dl  ':lua require'dap'.run_last()<CR>'

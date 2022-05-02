@@ -1,4 +1,4 @@
--- Modes
+-- Modeskey
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
@@ -28,6 +28,8 @@ map('n', 'sc', '<C-w>c', opt)
 map('n', 'so', '<C-w>o', opt)
 
 -- 左右比例控制
+map('n', '<F9>', ':vertical resize -6<CR>', opt)
+map('n', '<F10>', ':vertical resize +6<CR>', opt)
 map('n', 'sm', ':vertical resize -6<CR>', opt)
 map('n', 's,', ':vertical resize +6<CR>', opt)
 -- 上下比例
@@ -69,11 +71,11 @@ map('v', 'K', ":move '<-2<CR>gv-gv", opt)
 
 -- Insert Mode
 map('i', 'jj', '<Esc>', opt)
+map('i', '<C-j>', '<Esc>', opt)
 map('i', '<C-v>', '<cmd>w<CR>', opt)
-map('i', '<C-h>', '<left>', opt)
-map('i', '<C-l>', '<right>', opt)
-map('i', '<C-j>', '<down>', opt)
-map('i', '<C-u>', '<up>', opt)
+--map('i', '<C-h>', '<left>', opt)
+--map('i', '<C-l>', '<right>', opt)
+--map('i', '<C-u>', '<up>', opt)
 -- map('i', '{', '{}<Esc>i', opt)
 -- map('i', '(', '()<Esc>i', opt)
 -- map('i', '[', '[]<Esc>i', opt)
@@ -285,12 +287,12 @@ pluginKeys.cmp = function(cmp)
         ['<C-y>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         -- snippets 跳转
-        ['<C-0>'] = cmp.mapping(function(_)
+        ['<C-l>'] = cmp.mapping(function(_)
             if vim.fn['vsnip#available'](1) == 1 then
                 feedkey('<Plug>(vsnip-expand-or-jump)', '')
             end
         end, { 'i', 's' }),
-        ['<C-9>'] = cmp.mapping(function()
+        ['<C-h>'] = cmp.mapping(function()
             if vim.fn['vsnip#jumpable'](-1) == 1 then
                 feedkey('<Plug>(vsnip-jump-prev)', '')
             end

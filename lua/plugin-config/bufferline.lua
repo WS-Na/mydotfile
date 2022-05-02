@@ -21,8 +21,19 @@ bufferline.setup({
                 text_align = 'left',
             },
         },
+        numbers = 'none',
+        modified_icon = '🥹',
+        --没搞懂
+        show_tab_indicators = false,
+        --禁止buffer colse icons
+        buffer_close_icon = 'ℌ',
+        show_buffer_close_icons = true,
+        --禁止最后面的符号
+        show_close_icon = false,
         -- 使用 nvim 内置 LSP  后续课程会配置
         diagnostics = 'nvim_lsp',
+        --buffer style
+        separator_style = 'thick',
         -- 可选，显示 LSP 报错图标
         ---@diagnostic disable-next-line: unused-local
         diagnostics_indicator = function(count, evel, diagnostics_dict, context)

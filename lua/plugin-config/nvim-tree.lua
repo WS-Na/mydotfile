@@ -8,11 +8,7 @@ end
 local list_keys = require('keybindings').nvimTreeList
 
 nvim_tree.setup({
-    -- 关闭文件时自动关闭
-    -- auto_close = true(已移出),
-    --     vim.cmd([[
-    --    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-    --   ]]),
+    hijack_cursor = true,
     -- 不显示 git 状态图标
     git = {
         enable = false,
@@ -54,10 +50,10 @@ nvim_tree.setup({
     },
     renderer = {
         indent_markers = {
-            enable = false,
+            enable = true,
             icons = {
-                corner = '└ ',
-                edge = '│ ',
+                corner = '╚ ',
+                edge = '║ ',
                 none = '  ',
             },
         },
@@ -76,14 +72,14 @@ nvim_tree.setup({
     system_open = {
         cmd = 'open',
     },
-  diagnostics = {
-    enable = true,
-    show_on_dirs = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "🤡",
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        icons = {
+            hint = '',
+            info = '',
+            warning = '',
+            error = '🤡',
+        },
     },
-   },
 })

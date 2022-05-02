@@ -38,3 +38,15 @@ autocmd('BufWritePost', {
         end
     end,
 })
+-- 自动清理命令行信息
+vim.cmd([[" Clear cmd line message
+function! s:empty_message(timer)
+  if mode() ==# 'n'
+    echon ''
+  endif
+endfunction
+
+augroup cmd_msg_cls
+    autocmd!
+    autocmd CmdlineLeave :  call timer_start(3000, funcref('s:empty_message'))
+augroup END]])

@@ -21,7 +21,9 @@ bufferline.setup({
                 text_align = 'left',
             },
         },
-        numbers = 'none',
+        numbers = function(opts)
+            return string.format('%s⋆', opts.raise(opts.ordinal))
+        end,
         modified_icon = '🥹',
         --没搞懂
         show_tab_indicators = false,
